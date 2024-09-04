@@ -1,0 +1,24 @@
+
+.menu-bar {
+    background-color: rgb(0, 0, 0,0);
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 650px;
+    z-index: 2;
+}
+
+.menu-bar a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 14px 20px;
+    font-size: 18px;
+    display: inline-block;
+  
+}
+
+.menu-bar a:hover {
+    background-color: #575757;
+}
