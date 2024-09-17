@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work-Life Balance Survey</title>
+    <link rel="stylesheet" href="ostyle.css">
+    
+
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="images/RivEtUp.mp4" type="video/mp4">
+        <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+    </video>
+    <div class="container scroll-container">
+        <h1>Work-Life Balance Survey</h1>
+        <form id="work-life-balance-form" action="/submit-work-life-balance" method="POST" onsubmit="return validateForm()">
+            <div class="question">
+                <label for="employeeId">Employee ID:</label>
+                <input type="text" id="employeeId" name="employeeId" required>
+            </div>
+            <div class="question">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="question">
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" required>
+            </div>
+            <div class="question">
+                <label for="role">Role:</label>
+                <input type="text" id="role" name="role" required>
+            </div>
+
+            <!-- Ratings Table -->
+            <div class="rating-section">
+                <h3>Please rate the following:</h3>
+
+                <table class="rating-table">
+                    <tbody>
+               
+                        
+                        <!-- How frequently are you able to take short breaks during work hours? -->
+                        <tr>
+                            <td>How frequently are you able to take short breaks during work hours?</td>
+                            <td><input type="radio" id="shortBreaks1" name="shortBreaks" value="1" required>
+                                <label for="shortBreaks1">1</label></td>
+                            <td><input type="radio" id="shortBreaks2" name="shortBreaks" value="2" required>
+                                <label for="shortBreaks2">2</label></td>
+                            <td><input type="radio" id="shortBreaks3" name="shortBreaks" value="3" required>
+                                <label for="shortBreaks3">3</label></td>
+                            <td><input type="radio" id="shortBreaks4" name="shortBreaks" value="4" required>
+                                <label for="shortBreaks4">4</label></td>
+                            <td><input type="radio" id="shortBreaks5" name="shortBreaks" value="5" required>
+                                <label for="shortBreaks5">5</label></td>
+                        </tr>
+                        
+                        <!-- How often are you expected to respond to work emails outside of working hours? -->
+                        <tr>
+                            <td>How often are you expected to respond to work emails outside of working hours?</td>
+                            <td><input type="radio" id="workEmailsOutside1" name="workEmailsOutside" value="1" required>
+                                <label for="workEmailsOutside1">1</label></td>
+                            <td><input type="radio" id="workEmailsOutside2" name="workEmailsOutside" value="2" required>
+                                <label for="workEmailsOutside2">2</label></td>
+                            <td><input type="radio" id="workEmailsOutside3" name="workEmailsOutside" value="3" required>
+                                <label for="workEmailsOutside3">3</label></td>
+                            <td><input type="radio" id="workEmailsOutside4" name="workEmailsOutside" value="4" required>
+                                <label for="workEmailsOutside4">4</label></td>
+                            <td><input type="radio" id="workEmailsOutside5" name="workEmailsOutside" value="5" required>
+                                <label for="workEmailsOutside5">5</label></td>
+                        </tr>
+                        
+           
+                    </tbody>
+                </table>
+            </div>
+            <div class="rating-section">
+                <h3>Please rate the following:</h3>
+
+                <table class="rating-table">
+                    <tbody>
+                        <!-- Do you often find yourself working beyond your contracted hours? -->
+                        <tr>
+                            <td>Do you often find yourself working beyond your contracted hours?</td>
+                            <td><input type="radio" id="workingHoursYes" name="workingHours" value="Yes" required>
+                                <label for="workingHoursYes">Yes</label></td>
+                            <td><input type="radio" id="workingHoursNo" name="workingHours" value="No" required>
+                                <label for="workingHoursNo">No</label></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Do you feel pressure to remain connected to work while on holiday?</td>
+                            <td><input type="radio" id="holidayPressureYes" name="holidayPressure" value="Yes" required>
+                                <label for="holidayPressureYes">Yes</label></td>
+                            <td><input type="radio" id="holidayPressureNo" name="holidayPressure" value="No" required>
+                                <label for="holidayPressureNo">No</label></td>
+                        </tr>
+
+                        <!-- Do you feel supported by your immediate supervisor when discussing work-life balance concerns? -->
+                        <tr>
+                            <td>Do you feel supported by your immediate supervisor when discussing work-life balance concerns?</td>
+                            <td><input type="radio" id="supervisorSupportYes" name="supervisorSupport" value="Yes" required>
+                                <label for="supervisorSupportYes">Yes</label></td>
+                            <td><input type="radio" id="supervisorSupportNo" name="supervisorSupport" value="No" required>
+                                <label for="supervisorSupportNo">No</label></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br><br>
+            <div class="question">
+                <label for="additionalComments">Additional Comments:</label>
+                <input type="text" id="additionalComments" name="additionalComments">
+            </div>
+
+            <div id="message" class="message"></div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const requiredFields = ['employeeId', 'name', 'department', 'role'];
+            const ratingFields = ['workingHours', 'shortBreaks', 'workEmailsOutside', 'holidayPressure', 'supervisorSupport'];
+
+            let isValid = true;
+
+            requiredFields.forEach(function(field) {
+                const value = document.getElementById(field).value;
+                if (!value) {
+                    alert(`Please fill out the ${field} field.`);
+                    isValid = false;
+                }
+            });
+
+            ratingFields.forEach(function(field) {
+                const radios = document.getElementsByName(field);
+                let selected = false;
+                radios.forEach(radio => {
+                    if (radio.checked) {
+                        selected = true;
+                    }
+                });
+                if (!selected) {
+                    alert(`Please select an option for ${field}.`);
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>

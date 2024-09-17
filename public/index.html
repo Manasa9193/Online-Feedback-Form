@@ -1,186 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Form</title>
+    <title>Feedback Website</title>
     <style>
-    body {
+        body {
+    background-image: url("images/frame.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; 
-}
-
-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-}
-
-.container {
-  
-    position: relative;
-    top: 170px;
-    left: -195px;
-    max-width: 560px;
-    height: 530px; 
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgba(244, 244, 244, 0.9);
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; 
-  
-}
-
-h1 {
     text-align: center;
-    color: #d55a5a;
+    padding: 50px;
+    background-color: #ffffff;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-label {
-    display: block;
-    margin-bottom: 1px;
-    color: #333;
-    font-size: 20px;
-    height: 40px;
+.links-container {
+    position: absolute;
+    top: 280px;
+    left: 110px;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
 }
 
-input[type="text"],
-input[type="number"],
-select,
-textarea {
-    width: 100%;
-    height: 40px;
-    margin-bottom: 1px;
-    padding: 3px;
-    font-size: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-    border: none;
-    color: white;
+.links-container img {
+    width: 450px;
+    height: 500px;
     cursor: pointer;
- 
+    transition: transform 0.3s ease;
 }
 
-button img {
-    vertical-align: middle;
+.links-container img:hover {
+    transform: scale(1.1);
 }
+
+/* New styles for the box with logos */
+.box-container {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    width: 1000px; /* Adjust width as needed */
+    height: 60px;
+    border: 2px solid #000;
+    border-radius: 50px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: flex-end; /* Align content to the right */
+    align-items: center;
+}
+
+.box-container a {
+    display: block;
+}
+
+.box-container img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    margin-left: 10px; /* Space between images */
+}
+
+.box-container img:hover {
+    opacity: 0.8;
+}
+
     </style>
- <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    <header>
-    <div class="menu-bar">
-        <a href= "https://www.actitime.com/project-management/importance-of-feedback">
-            <img src="images/home.png" alt="home">
+    <div class="links-container">
+        <a href="overall-satisfaction.html">
+            <img src="images/o.png" alt="Overall Satisfaction">
         </a>
-        <a href="about.html">
-            <img src="images/about.png" alt="about">
-             </a>
+        <a href="work.html">
+            <img src="images/3.png" alt="Work">
+        </a>
+        <a href="professional-development.html">
+            <img src="images/p.png" alt="Professional Development">
+        </a>
     </div>
-</header>
-    <video autoplay muted loop>
-        <source src="images/Fedback.mp4" type="video/mp4">
-        <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
-    </video>
-    <div class="container1">
-    <div class="container">
-        <h1>FEEDBACK FORM</h1>
-        <form id="part1-form" action="/submit-part1" method="POST" onsubmit="return validateForm()">
-            <label for="name">Name<span style="color: red;">*</span>:</label>
-            <input type="text" id="name" name="name">
-            <label for="empid">EMPID<span style="color: red;">*</span>:</label>
-            <input type="number" id="empid" name="empid">
-            <label for="email">Email<span style="color: red;">*</span>:</label>
-            <input type="text" id="email" name="email">
-            
-            <label for="pno">Phone Number<span style="color: red;">*</span>:</label>
-            <input type="text" id="pno" name="pno">
-            
-            <label for="desig">Designation<span style="color: red;">*</span>:</label>
-            <select id="desig" name="desig">
-                <option value="">Select your designation</option>
-                <option value="IT Department">IT Department</option>
-                <option value="Finance Department">Finance Department</option>
-                <option value="Accounting Department">Accounting Department</option>
-                <option value="Management Department">Management Department</option>
-                <option value="Others">Others</option>
-            </select><br>
-            
-            <h4> All the Fields are Mandatory(*)</h4>
-            
-            <button type="submit" class="next-button">
-                <img src="images/right-arrow.png" alt="Next" width="40">
-            </button>
-        </form>
+
+    <!-- New Box with Logos -->
+    <div class="box-container">
+        <a href="guide.html">
+            <img src="images/guide.png" alt="Guide">
+        </a>
+        <a href="support.html">
+            <img src="images/support.png" alt="Support">
+        </a>
     </div>
-</div>
-<script>
-function validateForm() {
-    var name = document.getElementById("name");
-    var email = document.getElementById("email");
-    var pno = document.getElementById("pno");
-    var empid = document.getElementById("empid");
-    var desig = document.getElementById("desig");
-
-    var errorMessages = [];
-
-    if (name.value.trim() === "") {
-        errorMessages.push("Enter a Valid Name");
-    }
-    if (pno.value.trim() === "") {
-        errorMessages.push("Please enter your phone number.");
-    } else if (!validatePhoneNumber(pno)) {
-        errorMessages.push("Please enter a valid phone number.");
-    }
-
-    if (empid.value.trim() === "") {
-        errorMessages.push("Enter EMPID");
-    } else if (!validateEMPID(empid)) {
-        errorMessages.push("Enter Valid EMPID");
-    }
-
-    if (desig.value.trim() === "") {
-        errorMessages.push("Please select your designation.");
-    }
-
-    if (errorMessages.length > 0) {
-        alert(errorMessages.join("\n"));
-        return false;
-    }
-    if (email.value.trim() === "") {
-        errorMessages.push("Please enter your email.");
-    } else if (!validateEmail(email)) {
-        errorMessages.push("Please enter a valid email address.");
-    }
-
-    return true;
-}
-
-function validateEmail(email) {  
-    var emailPattern = /^[^\s@]+@(gmail\.com|yahoo\.com|example\.com)$/;
-    return emailPattern.test(email.value);
-}
-
-function validateEMPID(empid) {  
-    var empidPattern = /^[1-2]\d{4}$/;
-    return empidPattern.test(empid.value);
-}
-
-function validatePhoneNumber(phoneNumber) {
-    var phonePattern = /^[1-9]\d{9}$/;
-    return phonePattern.test(phoneNumber.value);
-}
-</script>
 </body>
 </html>

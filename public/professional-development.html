@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Development Survey | EchoEmpower</title>
+    <link rel="stylesheet" href="ostyle.css">
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="images/RivEtUp.mp4" type="video/mp4">
+        <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+    </video>
+    <div class="container scroll-container">
+        <h1>Professional Development Survey</h1>
+        <form id="professional-development-form" action="/submit-professional-development" method="POST" onsubmit="return validateProfessionalDevelopmentForm()">
+            <div class="question">
+                <label for="employeeId">Employee ID:</label>
+                <input type="text" id="employeeId" name="employeeId" required>
+            </div>
+            <div class="question">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="question">
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" required>
+            </div>
+            <div class="question">
+                <label for="role">Role:</label>
+                <input type="text" id="role" name="role" required>
+            </div>
+
+            <!-- Ratings Table -->
+            <div class="rating-section">
+                <h3>Please rate the following:</h3>
+
+                <table class="rating-table">
+                    <tbody>
+                        <!-- Professional Growth -->
+                        <tr>
+                            <td>Professional Growth:</td>
+                            <td><input type="radio" id="professionalGrowth1" name="professionalGrowth" value="1" required>
+                                <label for="professionalGrowth1">1</label></td>
+                            <td><input type="radio" id="professionalGrowth2" name="professionalGrowth" value="2" required>
+                                <label for="professionalGrowth2">2</label></td>
+                            <td><input type="radio" id="professionalGrowth3" name="professionalGrowth" value="3" required>
+                                <label for="professionalGrowth3">3</label></td>
+                            <td><input type="radio" id="professionalGrowth4" name="professionalGrowth" value="4" required>
+                                <label for="professionalGrowth4">4</label></td>
+                            <td><input type="radio" id="professionalGrowth5" name="professionalGrowth" value="5" required>
+                                <label for="professionalGrowth5">5</label></td>
+                        </tr>
+                        
+                        <!-- Career Opportunities -->
+                        <tr>
+                            <td>Career Opportunities:</td>
+                            <td><input type="radio" id="careerOpportunities1" name="careerOpportunities" value="1" required>
+                                <label for="careerOpportunities1">1</label></td>
+                            <td><input type="radio" id="careerOpportunities2" name="careerOpportunities" value="2" required>
+                                <label for="careerOpportunities2">2</label></td>
+                            <td><input type="radio" id="careerOpportunities3" name="careerOpportunities" value="3" required>
+                                <label for="careerOpportunities3">3</label></td>
+                            <td><input type="radio" id="careerOpportunities4" name="careerOpportunities" value="4" required>
+                                <label for="careerOpportunities4">4</label></td>
+                            <td><input type="radio" id="careerOpportunities5" name="careerOpportunities" value="5" required>
+                                <label for="careerOpportunities5">5</label></td>
+                        </tr>
+                        
+                        <!-- Sense of Accomplishment -->
+                        <tr>
+                            <td>Sense of Accomplishment:</td>
+                            <td><input type="radio" id="accomplishment1" name="accomplishment" value="1" required>
+                                <label for="accomplishment1">1</label></td>
+                            <td><input type="radio" id="accomplishment2" name="accomplishment" value="2" required>
+                                <label for="accomplishment2">2</label></td>
+                            <td><input type="radio" id="accomplishment3" name="accomplishment" value="3" required>
+                                <label for="accomplishment3">3</label></td>
+                            <td><input type="radio" id="accomplishment4" name="accomplishment" value="4" required>
+                                <label for="accomplishment4">4</label></td>
+                            <td><input type="radio" id="accomplishment5" name="accomplishment" value="5" required>
+                                <label for="accomplishment5">5</label></td>
+                        </tr>
+                        
+                        <!-- Training Opportunities -->
+                        <tr>
+                            <td>Training Opportunities:</td>
+                            <td><input type="radio" id="trainingOpportunities1" name="trainingOpportunities" value="1" required>
+                                <label for="trainingOpportunities1">1</label></td>
+                            <td><input type="radio" id="trainingOpportunities2" name="trainingOpportunities" value="2" required>
+                                <label for="trainingOpportunities2">2</label></td>
+                            <td><input type="radio" id="trainingOpportunities3" name="trainingOpportunities" value="3" required>
+                                <label for="trainingOpportunities3">3</label></td>
+                            <td><input type="radio" id="trainingOpportunities4" name="trainingOpportunities" value="4" required>
+                                <label for="trainingOpportunities4">4</label></td>
+                            <td><input type="radio" id="trainingOpportunities5" name="trainingOpportunities" value="5" required>
+                                <label for="trainingOpportunities5">5</label></td>
+                        </tr>
+
+                        <!-- Mentorship -->
+                        <tr>
+                            <td>Mentorship Support:</td>
+                            <td><input type="radio" id="mentorship1" name="mentorship" value="1" required>
+                                <label for="mentorship1">1</label></td>
+                            <td><input type="radio" id="mentorship2" name="mentorship" value="2" required>
+                                <label for="mentorship2">2</label></td>
+                            <td><input type="radio" id="mentorship3" name="mentorship" value="3" required>
+                                <label for="mentorship3">3</label></td>
+                            <td><input type="radio" id="mentorship4" name="mentorship" value="4" required>
+                                <label for="mentorship4">4</label></td>
+                            <td><input type="radio" id="mentorship5" name="mentorship" value="5" required>
+                                <label for="mentorship5">5</label></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br><br>
+            <div class="question">
+                <label for="additionalComments">Additional Comments:</label>
+                <input type="text" id="additionalComments" name="additionalComments">
+            </div>
+
+            <div id="message" class="message"></div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateProfessionalDevelopmentForm() {
+            const requiredFields = ['employeeId', 'name', 'department', 'role'];
+            const ratingFields = ['professionalGrowth', 'careerOpportunities', 'accomplishment', 'trainingOpportunities', 'mentorship'];
+
+            let isValid = true;
+
+            requiredFields.forEach(function(field) {
+                const value = document.getElementById(field).value;
+                if (!value) {
+                    alert(`Please fill out the ${field} field.`);
+                    isValid = false;
+                }
+            });
+
+            ratingFields.forEach(function(field) {
+                const radios = document.getElementsByName(field);
+                let selected = false;
+                radios.forEach(radio => {
+                    if (radio.checked) {
+                        selected = true;
+                    }
+                });
+                if (!selected) {
+                    alert(`Please select a rating for ${field}.`);
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>

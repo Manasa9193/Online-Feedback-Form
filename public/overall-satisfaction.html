@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overall Satisfaction Survey | EchoEmpower</title>
+    <link rel="stylesheet" href="ostyle.css">
+
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="images/RivEtUp.mp4" type="video/mp4">
+        <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+    </video>
+    <div class="container scroll-container">
+        <h1>Overall Satisfaction Survey</h1>
+        <form id="overall-form" action="/submit-overall-satisfaction" method="POST" onsubmit="return validateOverallForm()">
+            <div class="question">
+                <label for="employeeId">Employee ID:</label>
+                <input type="text" id="employeeId" name="employeeId" required>
+            </div>
+            <div class="question">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="question">
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" required>
+            </div>
+            <div class="question">
+                <label for="role">Role:</label>
+                <input type="text" id="role" name="role" required>
+            </div>
+
+            <!-- Ratings Table -->
+            <table class="rating-table">
+             <h3>Please Rate the following(1 to 5)</h3>
+                <tbody>
+                    <tr>
+                        <td>Job Satisfaction:</td>
+                        <td><input type="radio" id="jobSatisfaction1" name="jobSatisfaction" value="1" required>
+                            <label for="jobSatisfaction1">1</label></td>
+                        <td><input type="radio" id="jobSatisfaction2" name="jobSatisfaction" value="2" required>
+                            <label for="jobSatisfaction2">2</label></td>
+                        <td><input type="radio" id="jobSatisfaction3" name="jobSatisfaction" value="3" required>
+                            <label for="jobSatisfaction3">3</label></td>
+                        <td><input type="radio" id="jobSatisfaction4" name="jobSatisfaction" value="4" required>
+                            <label for="jobSatisfaction4">4</label></td>
+                        <td><input type="radio" id="jobSatisfaction5" name="jobSatisfaction" value="5" required>
+                            <label for="jobSatisfaction5">5</label></td>
+                    </tr>
+                    <tr>
+                        <td>Company Culture:</td>
+                        <td><input type="radio" id="companyCulture1" name="companyCulture" value="1" required>
+                            <label for="companyCulture1">1</label></td>
+                        <td><input type="radio" id="companyCulture2" name="companyCulture" value="2" required>
+                            <label for="companyCulture2">2</label></td>
+                        <td><input type="radio" id="companyCulture3" name="companyCulture" value="3" required>
+                            <label for="companyCulture3">3</label></td>
+                        <td><input type="radio" id="companyCulture4" name="companyCulture" value="4" required>
+                            <label for="companyCulture4">4</label></td>
+                        <td><input type="radio" id="companyCulture5" name="companyCulture" value="5" required>
+                            <label for="companyCulture5">5</label></td>
+                    </tr>
+                    <tr>
+                        <td>Management Satisfaction:</td>
+                        <td><input type="radio" id="managementSatisfaction1" name="managementSatisfaction" value="1" required>
+                            <label for="managementSatisfaction1">1</label></td>
+                        <td><input type="radio" id="managementSatisfaction2" name="managementSatisfaction" value="2" required>
+                            <label for="managementSatisfaction2">2</label></td>
+                        <td><input type="radio" id="managementSatisfaction3" name="managementSatisfaction" value="3" required>
+                            <label for="managementSatisfaction3">3</label></td>
+                        <td><input type="radio" id="managementSatisfaction4" name="managementSatisfaction" value="4" required>
+                            <label for="managementSatisfaction4">4</label></td>
+                        <td><input type="radio" id="managementSatisfaction5" name="managementSatisfaction" value="5" required>
+                            <label for="managementSatisfaction5">5</label></td>
+                    </tr>
+                    <tr>
+                        <td>Work Environment:</td>
+                        <td><input type="radio" id="workEnvironment1" name="workEnvironment" value="1" required>
+                            <label for="workEnvironment1">1</label></td>
+                        <td><input type="radio" id="workEnvironment2" name="workEnvironment" value="2" required>
+                            <label for="workEnvironment2">2</label></td>
+                        <td><input type="radio" id="workEnvironment3" name="workEnvironment" value="3" required>
+                            <label for="workEnvironment3">3</label></td>
+                        <td><input type="radio" id="workEnvironment4" name="workEnvironment" value="4" required>
+                            <label for="workEnvironment4">4</label></td>
+                        <td><input type="radio" id="workEnvironment5" name="workEnvironment" value="5" required>
+                            <label for="workEnvironment5">5</label></td>
+                    </tr>
+                    <tr>
+                        <td>Compensation and Benefits:</td>
+                        <td><input type="radio" id="compensationBenefits1" name="compensationBenefits" value="1" required>
+                            <label for="compensationBenefits1">1</label></td>
+                        <td><input type="radio" id="compensationBenefits2" name="compensationBenefits" value="2" required>
+                            <label for="compensationBenefits2">2</label></td>
+                        <td><input type="radio" id="compensationBenefits3" name="compensationBenefits" value="3" required>
+                            <label for="compensationBenefits3">3</label></td>
+                        <td><input type="radio" id="compensationBenefits4" name="compensationBenefits" value="4" required>
+                            <label for="compensationBenefits4">4</label></td>
+                        <td><input type="radio" id="compensationBenefits5" name="compensationBenefits" value="5" required>
+                            <label for="compensationBenefits5">5</label></td>
+                    </tr>
+                </tbody>
+            </table>
+<br><br>
+            <div class="question">
+                <label for="additionalComments">Additional Comments:</label>
+                <input type="text" id="additionalComments" name="additionalComments">
+            </div>
+
+            <div id="message" class="message"></div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateOverallForm() {
+            const requiredFields = ['employeeId', 'name', 'department', 'role'];
+            const ratingFields = ['jobSatisfaction', 'companyCulture', 'managementSatisfaction', 'workEnvironment', 'compensationBenefits'];
+
+            let isValid = true;
+            
+            requiredFields.forEach(function(field) {
+                const value = document.getElementById(field).value;
+                if (!value) {
+                    alert(`Please fill out the ${field} field.`);
+                    isValid = false;
+                }
+            });
+
+            ratingFields.forEach(function(field) {
+                const radios = document.getElementsByName(field);
+                let selected = false;
+                radios.forEach(radio => {
+                    if (radio.checked) {
+                        selected = true;
+                    }
+                });
+                if (!selected) {
+                    alert(`Please select a rating for ${field}.`);
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            background-image: url("images/guideh.png");
+            background-size: cover; /* Makes the background image cover the entire page */
+            background-position: top center; /* Aligns the top of the image with the top of the viewport */
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+        .return-home {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        p {
+            font-size: 40px;
+            color: #f8f8f8;
+        }
+        a {
+            text-decoration: none;
+            color: #fefefe;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .info-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 300px;
+            background: linear-gradient(90deg, #a6a6a6, #ffffff);
+            overflow-y: auto;
+            padding: 20px;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+        .info-container h2 {
+            color: #333;
+        }
+        .info-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .info-container li {
+            margin-bottom: 15px;
+        }
+        .info-container a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .info-container a:hover {
+            text-decoration: underline;
+        }
+        .info-container .section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-container">
+        <h2>Website Navigation Guide</h2>
+        <div class="section">
+            <h3>Home</h3>
+            <p>Go back to the <a href="/">homepage</a> to access the main navigation and overview of the survey system.</p>
+        </div>
+        <div class="section">
+            <h3>Surveys</h3>
+            <ul>
+                <li><a href="/overall-satisfaction">Overall Satisfaction Survey</a>: Provide feedback on your overall satisfaction with the company.</li>
+                <li><a href="/work-balance">Work-Life Balance Survey</a>: Share your thoughts on how well the company supports your work-life balance.</li>
+                <li><a href="/professional-development">Professional Development Survey</a>: Rate your experiences and satisfaction with professional growth opportunities.</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h3>Results</h3>
+            <ul>
+                <li><a href="/results-overall">Overall Satisfaction Results</a>: View the aggregated results from the Overall Satisfaction Survey.</li>
+                <li><a href="/results-professional-development">Professional Development Results</a>: Check out the results from the Professional Development Survey.</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h3>Support</h3>
+            <p>If you need help or have questions, visit our <a href="/support">Support page</a>.</p>
+        </div>
+    </div>
+    <p class="return-home"><a href="/">Previous</a></p>
+</body>
+</html>

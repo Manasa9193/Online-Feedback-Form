@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overall Satisfaction Results</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Etna:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-family: 'Etna', sans-serif;
+            font-size: 6em; /* Match example font size */
+            font-weight: bold;
+            margin: 0;
+        }
+        .header .button-container {
+            display: flex;
+            align-items: center;
+        }
+        .header .button-container .red-button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 100px; /* Match example top position */
+            right: 25px;
+            width: 300px; /* Match example width */
+            height: 65px; /* Match example height */
+            font-size: 1.5em; /* Match example font size */
+            text-align: center;
+        }
+        .header .button-container .red-button::after {
+            content: 'Home Page';
+            padding-left: 10px;
+        }
+        .charts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around; /* Match example spacing */
+            margin-top: 115px; /* Match example top margin */
+        }
+        .chart-container {
+            width: 30%;
+            height: 500px; /* Match example height */
+            margin-bottom: 10px;
+            position: relative;
+            text-align: center;
+        }
+        .chart-container .info-box {
+            color: rgb(0, 0, 0);
+            position: absolute;
+            top: 0;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px; 
+            padding: 10px;
+            width: calc(100% - 80px); /* Adjusted to match example */
+            height: 70px; /* Match example height */
+            font-size: 1.2em; /* Match example font size */
+            border: 2px solid black;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        canvas {
+            position: relative;
+            top: 100px; /* Match example canvas position */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="button-container">
+            <button class="red-button" onclick="window.location.href='index.html';"></button>
+        </div>
+    </div>
+    <h1>Overall Satisfaction</h1>
+    <div class="charts">
+        <div class="chart-container">
+            <div class="info-box">
+                <h2>Job Satisfaction: <span id="jobSatisfactionAvg"></span></h2>
+            </div>
+            <canvas height="200px" width="280px" id="jobSatisfactionChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <div class="info-box">
+                <h2>Company Culture: <span id="companyCultureAvg"></span></h2>
+            </div>
+            <canvas height="200px" width="280px" id="companyCultureChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <div class="info-box">
+                <h2>Management Satisfaction: <span id="managementSatisfactionAvg"></span></h2>
+            </div>
+            <canvas height="200px" width="280px" id="managementSatisfactionChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <div class="info-box">
+                <h2>Work Environment: <span id="workEnvironmentAvg"></span></h2>
+            </div>
+            <canvas height="200px" width="280px" id="workEnvironmentChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <div class="info-box">
+                <h2>Compensation & Benefits: <span id="compensationBenefitsAvg"></span></h2>
+            </div>
+            <canvas height="200px" width="280px" id="compensationBenefitsChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        function createChart(canvasId, label, data) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+
+            // Ensure data includes all ratings from 1 to 5
+            const allRatings = ['1', '2', '3', '4', '5'];
+            const chartData = allRatings.map(rating => data[rating] || 0);
+
+            // Determine the maximum value for setting Y-axis scale
+            const maxValue = Math.max(...chartData, 1); // Ensure at least 1 for visibility
+            const yMax = Math.ceil(maxValue / 3) * 3; // Round up to the nearest multiple of 3
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: allRatings,
+                    datasets: [{
+                        label: label,
+                        data: chartData,
+                        backgroundColor: chartData.map(value => value === 0 ? 'rgba(0,0,0,0.1)' : 'rgba(0,0,0,1)'), // Light color for zero values
+                        borderColor: 'rgba(0,0,0)',
+                        borderWidth: 1,
+                        barPercentage: 0.9,
+                        categoryPercentage: 0.7
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                padding: 10
+                            },
+                            border: {
+                                display: true,
+                                color: 'rgba(0, 0, 0, 1)',
+                                width: 2
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                            beginAtZero: true,
+                            min: 0, // Start y-axis from 0
+                            max: yMax, // Set max value to the nearest multiple of 3
+                            ticks: {
+                                stepSize: 3, // Increment by 3
+                                precision: 0 // Remove decimal points
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'end',
+                            formatter: Math.round,
+                            color: 'black'
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels]
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/api/feedback-stats/overall')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+
+                    const calculateAverage = (ratings) => {
+                        if (!ratings || Object.keys(ratings).length === 0) return 'N/A';
+                        const sum = Object.keys(ratings).reduce((acc, key) => acc + (parseInt(key, 10) * ratings[key]), 0);
+                        const totalResponses = Object.values(ratings).reduce((acc, val) => acc + val, 0);
+                        return totalResponses > 0 ? (sum / totalResponses).toFixed(1) : 'N/A';
+                    };
+
+                    const jobSatisfactionAvg = calculateAverage(data.jobSatisfaction);
+                    const companyCultureAvg = calculateAverage(data.companyCulture);
+                    const managementSatisfactionAvg = calculateAverage(data.managementSatisfaction);
+                    const workEnvironmentAvg = calculateAverage(data.workEnvironment);
+                    const compensationBenefitsAvg = calculateAverage(data.compensationBenefits);
+
+                    document.getElementById('jobSatisfactionAvg').innerText = jobSatisfactionAvg;
+                    document.getElementById('companyCultureAvg').innerText = companyCultureAvg;
+                    document.getElementById('managementSatisfactionAvg').innerText = managementSatisfactionAvg;
+                    document.getElementById('workEnvironmentAvg').innerText = workEnvironmentAvg;
+                    document.getElementById('compensationBenefitsAvg').innerText = compensationBenefitsAvg;
+
+                    createChart('jobSatisfactionChart', 'Job Satisfaction', data.jobSatisfaction);
+                    createChart('companyCultureChart', 'Company Culture', data.companyCulture);
+                    createChart('managementSatisfactionChart', 'Management Satisfaction', data.managementSatisfaction);
+                    createChart('workEnvironmentChart', 'Work Environment', data.workEnvironment);
+                    createChart('compensationBenefitsChart', 'Compensation & Benefits', data.compensationBenefits);
+                })
+                .catch(error => console.error('Error fetching feedback stats:', error));
+        });
+    </script>
+</body>
+</html>

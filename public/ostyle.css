@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensure video is behind content */
+}
+
+.container {
+    position: absolute;
+    top: 190px;
+    left: 310px;
+    width: 575px; /* Ensure container width */
+    height: 210px; /* Increased container height significantly */
+    min-height: 500px; /* Ensure minimum height */
+    padding: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ffffff;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow-y: auto;
+    z-index: 1; /* Ensure form is above the video */
+}
+
+
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px; /* Space below the heading */
+}
+        /* Basic styles for form elements */
+        .question {
+            margin-bottom: 25px;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .question input[type="number"],
+        .question input[type="text"],
+        .question textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 5px solid #000;
+            border-radius: 20px;
+            outline: none;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-top-width: 1px;
+        }
+/* Style for the entire table border */
+.rating-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border: 2px solid black; /* Add border around the entire table */
+}
+
+/* Ensure table header and cells have appropriate styles */
+.rating-table th, .rating-table td {
+    padding: 10px;
+    border: none; /* Remove column borders */
+    text-align: center; /* Center text for better alignment */
+}
+
+/* Style for the row borders */
+.rating-table tr {
+    border-bottom: 1px solid #ddd; /* Show row lines */
+}
+
+/* Align the first column to the left and make text bold */
+.rating-table td:first-child {
+    text-align: left; /* Align the first column to the left */
+    font-weight: bold; /* Make text bold */
+}
+
+/* Hide actual radio buttons */
+.rating-table input[type="radio"] {
+    display: none; /* Hide radio buttons */
+}
+
+/* Style the labels as circular radio buttons */
+.rating-table label {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 50%; /* Make the labels circular */
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #0a0909;
+    text-align: center; /* Center text inside labels */
+    line-height: 1; /* Adjust line height for better alignment */
+    background-color: #fffcfc; /* Light background for better contrast */
+    width: 30px; /* Set fixed width for circular shape */
+    height: 30px; /* Set fixed height for circular shape */
+    display: flex; /* Use flexbox to center text */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+}
+
+.rating-table input[type="radio"]:checked + label {
+    background-color: #df8f8f;
+    color: rgb(0, 0, 0);
+    font-weight: bold; /* Bold text inside selected radio button */
+}
+.submit-button {
+    background-color: black;      /* Set background color to black */
+    color: white;                 /* Set text color to white */
+    border: none;                 /* Remove default border */
+    border-radius: 40%;           /* Set border radius to 40% */
+    padding: 10px 20px;           /* Add some padding for better appearance */
+    font-size: 1em;               /* Adjust font size if needed */
+    cursor: pointer;              /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.submit-button:hover {
+    background-color: #333;      /* Slightly lighter black for hover effect */
+}

@@ -1,0 +1,34 @@
+version: '3.8'
+ 
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - mynetwork1
+    volumes:
+      - mongo-data:/data/db
+ 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-app
+    ports:
+      - "3007:3007"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/Feedbacks
+    networks:
+      - mynetwork1
+ 
+networks:
+  mynetwork1:
+    driver: bridge
+ 
+volumes:
+  mongo-data:
+ 
