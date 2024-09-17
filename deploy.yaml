@@ -1,0 +1,62 @@
+---
+- name: Deploy application and MongoDB
+  hosts: servers
+  become: yes
+  vars:
+    mongo_image: "mongo:latest"
+    app_image: "my-app-image:latest"  # Use the actual image name/tag for your app
+    app_port: 3007
+    mongo_port: 27017
+    mongo_data_path: /data/db
+    mongo_container_name: mongo
+    app_container_name: my-app
+    network_name: mynetwork1
+    volume_name: mongo-data
+
+  tasks:
+    - name: Install Docker
+      yum:
+        name: docker
+        state: present
+
+    - name: Install Docker Compose
+      yum:
+        name: docker-compose
+        state: present
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Create Docker network
+      docker_network:
+        name: mynetwork1
+        state: present
+
+    - name: Start MongoDB container
+      docker_container:
+        name: mongo
+        image: mongo:latest
+        state: started
+        restart_policy: always
+        networks:
+          - name: mynetwork1
+        published_ports:
+          - 27017:27017
+        volumes:
+          - mongo-data:/data/db
+
+    - name: Start application container
+      docker_container:
+        name: my-app
+        image: srimanasa1/rivertup:latest
+        state: started
+        restart_policy: always
+        networks:
+          - name: mynetwork1
+        published_ports:
+          - 3007:3007
+        env:
+          MONGO_URI: "mongodb://mongodb:27017/Survey"

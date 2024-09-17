@@ -83,6 +83,13 @@ app.get('/professional-development', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'professional-development.html'));
 });
 
+app.get('/guide', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'guide.html'));
+  });
+
+  app.get('/support', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'support.html'));
+  });
 // Serve results for each survey type
 app.get('/results-professional-development', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'result2.html'));
